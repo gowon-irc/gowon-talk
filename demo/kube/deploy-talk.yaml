@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: talk
+  labels:
+    app.kubernetes.io/name: talk
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: talk
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: talk
+    spec:
+      containers:
+        - name: talk
+          image: talk
+          env:
+            - name: GOWON_BROKER
+              value: mosquitto:1883
